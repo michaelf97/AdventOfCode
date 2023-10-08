@@ -48,7 +48,11 @@ void part_2(FILE *input)
         if (floor < 0) break;
     }
 
-    (void)printf("The turn where Santa enters the basement is %ld\n", ftell(input));
+    long pos = ftell(input);
+    if (floor < 0)
+        (void)printf("The turn where Santa enters the basement is %ld\n", pos);
+    else
+        (void)printf("Santa never entered the basement\n");
 }
 
 int main(void)
