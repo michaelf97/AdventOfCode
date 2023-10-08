@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-FILE* read_input(char* filename)
+FILE* read_input(char *filename)
 {
     FILE *fp;
 
