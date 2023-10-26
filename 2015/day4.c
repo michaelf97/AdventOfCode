@@ -34,12 +34,12 @@ void validate_secret_key(secret_key *sk, char *secret_key_input)
 		perror("Secret key size invalid\n");
 		exit(1); 
 	}
-	strncpy(*sk, secret_key_input, SECRET_KEY_SIZE + 1);
+	(void)strncpy(*sk, secret_key_input, SECRET_KEY_SIZE + 1);
 }
 
 void validate_number_key(number_key nk, int number)
 {
-	sprintf(nk, "%d", number);
+	(void)sprintf(nk, "%d", number);
 }
 
 void compute_md5(block_string bs, char *hash)
@@ -47,12 +47,12 @@ void compute_md5(block_string bs, char *hash)
 	unsigned char digest[MD5_DIGEST_SIZE];
 	
 	MD5_CTX ctx;
-	MD5_Init(&ctx);
-	MD5_Update(&ctx, bs, strlen(bs));
-	MD5_Final(digest, &ctx);
+	(void)MD5_Init(&ctx);
+	(void)MD5_Update(&ctx, bs, strlen(bs));
+	(void)MD5_Final(digest, &ctx);
 
 	for (int i = 0, j = 0; i < MD5_DIGEST_SIZE; i++, j+=2)
-		sprintf(hash+j, "%02x", digest[i]);
+		(void)sprintf(hash+j, "%02x", digest[i]);
 		
 	hash[MD5_DIGEST_SIZE * 2] = 0;
 }
@@ -88,7 +88,7 @@ void part1(char *secret_key_input)
 		counter ++;
 	} while (validate_hash(hash) == -1);
 
-	printf("Part1 Answer: %s\n", nk);
+	(void)printf("Part1 Answer: %s\n", nk);
 }
 
 int main(void)
